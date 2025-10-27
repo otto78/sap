@@ -1,1 +1,38 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-lg main-navbar px-4" [class.scrolled]="isScrolled()">
+    <div class="row align-items-center">
+        <div class="col-3">
+            <a class="navbar-brand" routerLink="/">
+                <img src="/images/logo.png" alt="Logo Sefora Antonello Psicologa">
+            </a>
+        </div>
+        <div class="col-6">
+            <button class="navbar-toggler" type="button" (click)="toggleMenu()"
+                [attr.aria-expanded]="!isMenuCollapsed()" aria-controls="navbarNav" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" [class.show]="!isMenuCollapsed()" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    @for (item of menuItems(); track item.route) {
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="item.route" routerLinkActive="active"
+                            [routerLinkActiveOptions]="{ exact: true }" (click)="setActiveMenu(item.route)">
+                            {{ item.label }}
+                        </a>
+                    </li>
+                    }
+                </ul>
+
+            </div>
+        </div>
+        <div class="col-3 text-end d-none d-md-block">
+            @for (social of socialLinks(); track social.url) {
+            <a (click)="openSocialLink(social.url)" class="social-link me-2" role="button" tabindex="0"
+                [attr.aria-label]="social.label" [href]="social.url" target="_blank">
+                <i [class]="'bi ' + social.icon"></i>
+            </a>
+            }
+
+        </div>
+    </div>
+</nav>

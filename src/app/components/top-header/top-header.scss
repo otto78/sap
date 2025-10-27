@@ -1,0 +1,55 @@
+@use "./../../../styles.scss" as color;
+
+.top-header {
+    font-family: "Mulish", "Muli", sans-serif !important;
+    font-size: 0.9rem !important;
+    background-color: color.$primary-color;
+    border-bottom: 1px solid #e0e0e0;
+    padding: 6px 0;
+    font-size: 0.9rem;
+}
+
+.contact-link {
+    color: color.$secondary-color;
+    text-decoration: none;
+    margin-right: 20px;
+    cursor: pointer;
+    transition: color.$transition;
+    display: inline-block;
+
+    &:hover {
+        color: color.$button;
+    }
+
+    i {
+        margin-right: 5px;
+        color: color.$secondary-color;
+
+        &:hover {
+            color: color.$button;
+        }
+    }
+}
+
+.btn-appointment {
+    background-color: color.$button;
+    color: color.$secondary-color;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-weight: 500;
+    transition: color.$transition;
+    white-space: nowrap;
+
+    &:hover {
+        background-color: color.$buttonHover;
+        font-weight: 700;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        color: #fff;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(74, 144, 164, 0.3);
+    }
+}

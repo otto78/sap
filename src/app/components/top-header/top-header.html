@@ -1,0 +1,33 @@
+<div class="d-none d-md-block top-header px-5">
+    <div class="row align-items-center px-2">
+        <div class="col-5 col-xl-3 text-light">Dott.ssa Sefora Antonello</div>
+        <div class="col-2 col-xl-6 d-flex justify-content-center gap-5">
+            <a (click)="callPhone($event)" class="contact-link" role="button" tabindex="0">
+                <div class="d-flex align-items-center">
+                    <div><i class="bi bi-telephone-fill"></i></div>
+                    <div class="ms-2 d-none d-xl-block">{{ contactInfo().phone }}</div>
+                </div>
+            </a>
+            <a (click)="goToPosition($event)" class="contact-link" role="button" tabindex="0">
+                <div class="d-flex align-items-center">
+                    <div><i class="bi bi-geo-alt-fill"></i></div>
+                    <div class="ms-2 d-none d-xl-block">
+                        {{ contactInfo().position }}
+                    </div>
+
+                </div>
+            </a>
+            <a (click)="sendEmail($event)" class="contact-link" role="button" tabindex="0">
+                <div class="d-flex align-items-center">
+                    <div><i class="bi bi-envelope-fill"></i></div>
+                    <div class="ms-2 d-none d-xl-block">{{ contactInfo().email }}</div>
+                </div>
+            </a>
+        </div>
+        <div class="col-5 col-xl-3 text-end">
+            <button class="btn btn-appointment" (click)="navigateToAppointment()" type="button">
+                PRENOTA UN APPUNTAMENTO
+            </button>
+        </div>
+    </div>
+</div>
