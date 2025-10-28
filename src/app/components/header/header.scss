@@ -1,0 +1,367 @@
+@use "./../../../styles.scss" as color;
+
+// ===========================
+// 🌐 MAIN NAVBAR
+// ===========================
+.main-navbar {
+  font-family: "Playfair Display", sans-serif;
+  color: color.$text-dark-gray;
+  font-size: 18px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+  transition: color.$transition;
+  position: relative;
+
+  @media (max-width: 1199.98px) {
+    padding: 0.5rem 0;
+  }
+
+  &.scrolled {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 0.5rem 0;
+  }
+}
+
+// ===========================
+// 🏷️ BRAND LOGO
+// ===========================
+.navbar-brand {
+  display: flex;
+  padding: 0;
+
+  img {
+    transition: color.$transition;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.logo-image {
+  max-width: 80px;
+
+  @media (max-width: 1180px) {
+    max-width: 60px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 25px;
+  }
+}
+
+.logo-title {
+  max-height: 58px;
+
+  @media (max-width: 1180px) {
+    max-height: 40px;
+  }
+
+  @media (max-width: 768px) {
+    max-height: 30px;
+  }
+}
+
+// ===========================
+// 💻 DESKTOP MENU INLINE
+// ===========================
+.desktop-menu {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .nav-item {
+    position: relative;
+
+    // Dropdown
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #fff;
+      border: none;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      min-width: 220px;
+      padding: 0.5rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:hover .dropdown-menu,
+    .dropdown-menu.show {
+      display: block;
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .dropdown-item {
+      color: color.$text-dark;
+      font-weight: 400;
+      padding: 0.5rem 1rem;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: color.$primary-color;
+        transition: color.$transition;
+        transform: translateX(-50%);
+      }
+
+      &:hover {
+        color: color.$primary-color;
+      }
+
+      &:hover::after,
+      &.active::after {
+        width: 80%;
+      }
+
+      &.active {
+        color: color.$primary-color;
+      }
+    }
+
+    // Rimuove la freccetta ▼
+    .dropdown-toggle::after {
+      display: none !important;
+    }
+  }
+}
+
+// ===========================
+// 🔗 NAVIGATION LINKS (desktop + shared)
+// ===========================
+.nav-link {
+  color: color.$text-dark !important;
+  font-weight: 400;
+  padding: 0.5rem 1rem !important;
+  transition: color.$transition;
+  position: relative;
+
+  @media (max-width: 1199.98px) {
+    font-size: 1rem;
+    padding: 0.75rem 1rem !important;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: color.$primary-color;
+    transition: color.$transition;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    color: color.$primary-color !important;
+  }
+
+  &:hover::after,
+  &.active::after {
+    width: 80%;
+  }
+
+  &.active {
+    color: color.$primary-color !important;
+  }
+}
+
+// ===========================
+// 📱 MENU MOBILE / ACCORDION
+// ===========================
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+
+  @media (min-width: 1200px) {
+    display: none !important;
+  }
+
+  .navbar-nav {
+    padding: 0;
+
+    .nav-item {
+      text-align: center;
+      padding: 0;
+    }
+  }
+
+  // Pulsante principale (es. “Di cosa mi occupo”)
+  .accordion-button {
+    background-color: transparent;
+    font-weight: 400;
+    color: color.$text-dark;
+    justify-content: center;
+    box-shadow: none;
+    border: none;
+    padding: 0.75rem 1rem;
+    position: relative;
+
+    &::after {
+      display: none; // niente freccetta
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: color.$primary-color;
+      transition: color.$transition;
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      color: color.$primary-color;
+    }
+
+    &:hover::before,
+    &.active::before,
+    &:not(.collapsed)::before {
+      width: 80%;
+    }
+
+    &.active,
+    &:not(.collapsed) {
+      color: color.$primary-color;
+      background-color: transparent !important;
+    }
+  }
+
+  // Sottomenu
+  .accordion-body {
+    padding: 0;
+
+    .nav-link {
+      display: block;
+      color: color.$text-dark;
+      padding: 0.75rem 1rem;
+      text-align: center;
+      font-weight: 400;
+      background-color: transparent !important;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background-color: color.$primary-color;
+        transition: color.$transition;
+        transform: translateX(-50%);
+      }
+
+      &:hover {
+        color: color.$primary-color;
+      }
+
+      &:hover::after,
+      &.active::after {
+        width: 80%;
+      }
+
+      &.active {
+        color: color.$primary-color !important;
+      }
+    }
+  }
+
+  // Voci senza figli
+  .nav-link.text-center {
+    display: block;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background-color: color.$primary-color;
+      transition: color.$transition;
+      transform: translateX(-50%);
+    }
+
+    &:hover {
+      color: color.$primary-color;
+    }
+
+    &:hover::after,
+    &.active::after {
+      width: 80%;
+    }
+
+    &.active {
+      color: color.$primary-color !important;
+    }
+  }
+}
+
+// ===========================
+// 🔗 SOCIAL LINKS
+// ===========================
+.social-link {
+  color: color.$text-gray;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color.$transition;
+  font-size: 1.1rem;
+
+  @media (max-width: 1199.98px) {
+    font-size: 0.9rem;
+  }
+
+  &:hover {
+    color: color.$primary-color;
+    transform: translateY(-2px);
+  }
+}
+
+// ===========================
+// 🍔 NAVBAR TOGGLER
+// ===========================
+.navbar-toggler {
+  border: none;
+  padding: 0.5rem;
+
+  &:focus {
+    box-shadow: none;
+    outline: 2px solid color.$primary-color;
+  }
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(74, 144, 164, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}

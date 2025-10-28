@@ -1,145 +1,19 @@
-.page {
-    min-height: 130vh;
-}
-
 // Variables
 $primary-color: #91d0cc;
 $secondary-color: #f8f9fa;
 $button: #4ab0a9;
 $buttonHover: #D9BE93;
 $text-dark: #333;
-$text-gray: #666;
+$text-gray: #787878;
+$text-dark-gray: #444444;
+
 $transition: all 0.3s ease;
 
-.social-link {
-    color: $text-dark;
-    text-decoration: none;
-    cursor: pointer;
-    transition: $transition;
-    font-size: 1.1rem;
 
-    &:hover {
-        color: $primary-color;
-        transform: translateY(-2px);
-    }
+body {
+    font-family: "Mulish", "Muli", sans-serif !important;
 }
 
-// Main Navigation
-.main-navbar {
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 1rem 0;
-    //   position: sticky;
-    //   top: 0;
-    z-index: 1000;
-    transition: $transition;
-
-    &.scrolled {
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        padding: 0.5rem 0;
-    }
-}
-
-// Brand
-.navbar-brand {
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    padding: 0;
-
-    &:hover .brand-name {
-        color: #3a7a8a;
-    }
-}
-
-.brand-name {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: $primary-color;
-    line-height: 1.2;
-}
-
-.brand-subtitle {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: $text-gray;
-}
-
-// Navigation Links
-.nav-link {
-    color: $text-dark !important;
-    font-weight: 500;
-    padding: 0.5rem 1rem !important;
-    transition: $transition;
-    position: relative;
-
-    &:hover {
-        color: $primary-color !important;
-    }
-
-    &::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        width: 0;
-        height: 2px;
-        background-color: $primary-color;
-        transition: $transition;
-        transform: translateX(-50%);
-    }
-
-    &:hover::after,
-    &.active::after {
-        width: 80%;
-    }
-
-    &.active {
-        color: $primary-color !important;
-    }
-}
-
-// Navbar Toggler
-.navbar-toggler {
-    border: none;
-    padding: 0.5rem;
-
-    &:focus {
-        box-shadow: none;
-        outline: 2px solid $primary-color;
-    }
-}
-
-.navbar-toggler-icon {
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(74, 144, 164, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
-}
-
-// Responsive Design
-@media (max-width: 991px) {
-    .navbar-nav {
-        padding: 1rem 0;
-    }
-
-    .nav-link::after {
-        display: none;
-    }
-
-    .contact-link {
-        display: block;
-        margin: 0.5rem 0;
-    }
-}
-
-@media (max-width: 767px) {
-    .brand-name {
-        font-size: 1.2rem;
-    }
-
-    .brand-subtitle {
-        font-size: 0.8rem;
-    }
-
-    .top-header {
-        font-size: 0.85rem;
-    }
+.page {
+    min-height: 130vh;
 }

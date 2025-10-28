@@ -1,38 +1,105 @@
-<nav class="navbar navbar-expand-lg main-navbar px-4" [class.scrolled]="isScrolled()">
-    <div class="row align-items-center">
-        <div class="col-3">
-            <a class="navbar-brand" routerLink="/">
-                <img src="/images/logo.png" alt="Logo Sefora Antonello Psicologa">
-            </a>
-        </div>
-        <div class="col-6">
-            <button class="navbar-toggler" type="button" (click)="toggleMenu()"
-                [attr.aria-expanded]="!isMenuCollapsed()" aria-controls="navbarNav" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" [class.show]="!isMenuCollapsed()" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-lg-center">
-                    @for (item of menuItems(); track item.route) {
-                    <li class="nav-item">
-                        <a class="nav-link" [routerLink]="item.route" routerLinkActive="active"
-                            [routerLinkActiveOptions]="{ exact: true }" (click)="setActiveMenu(item.route)">
-                            {{ item.label }}
-                        </a>
-                    </li>
-                    }
-                </ul>
-
+<nav class="navbar navbar-expand-xl main-navbar px-1 px-lg-4" [class.scrolled]="isScrolled()">
+    <div class="container-fluid">
+        <div class="row w-100 align-items-center">
+            <div class="col-4 col-xl-3">
+                <a class="navbar-brand" routerLink="/">
+                    <div class="d-flex align-items-end">
+                        <img src="/images/logo-immagine.png" class="img-fluid logo-image"
+                            alt="Logo Sefora Antonello Psicologa">
+                        <img src="/images/logo-titolo.png" class="img-fluid logo-title ms-2"
+                            alt="Logo Sefora Antonello Psicologa">
+                    </div>
+                </a>
+            </div>
+            <div class="col-4 col-xl-6 text-center">
+                <button class="navbar-toggler d-xl-none" type="button" (click)="toggleMenu()"
+                    [attr.aria-expanded]="!isMenuCollapsed()" aria-controls="navbarNav" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="col-4 col-xl-3 text-end">
+                @for (social of socialLinks(); track social.url) {
+                <a (click)="openSocialLink(social.url)" class="social-link me-2 me-xl-5" role="button" tabindex="0"
+                    [attr.aria-label]="social.label" [href]="social.url" target="_blank">
+                    <i [class]="'bi ' + social.icon"></i>
+                </a>
+                }
             </div>
         </div>
-        <div class="col-3 text-end d-none d-md-block">
-            @for (social of socialLinks(); track social.url) {
-            <a (click)="openSocialLink(social.url)" class="social-link me-2" role="button" tabindex="0"
-                [attr.aria-label]="social.label" [href]="social.url" target="_blank">
-                <i [class]="'bi ' + social.icon"></i>
-            </a>
-            }
 
+        <!-- Menu mobile a tendina -->
+        <div class="collapse navbar-collapse mobile-menu" [class.show]="!isMenuCollapsed()" id="navbarNav">
+            <ul class="navbar-nav">
+                @for (item of menuItems(); track item.route) {
+                <li class="nav-item">
+                    <!-- Se ha figli → accordion -->
+                    @if (item.children) {
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header" id="{{ item.route }}-header">
+                            <button class="accordion-button collapsed nav-link w-100 text-center" type="button"
+                                data-bs-toggle="collapse" [attr.data-bs-target]="'#' + item.route + '-collapse'"
+                                aria-expanded="false" [attr.aria-controls]="item.route + '-collapse'"
+                                [routerLink]="item.route" routerLinkActive="active"
+                                [routerLinkActiveOptions]="{ exact: false }">
+                                <strong>{{ item.label }}</strong>
+                            </button>
+                        </h2>
+                        <div [id]="item.route + '-collapse'" class="accordion-collapse collapse"
+                            [attr.aria-labelledby]="item.route + '-header'" data-bs-parent="#navbarNav">
+                            <div class="accordion-body p-0">
+                                <ul class="list-unstyled mb-0">
+                                    @for (child of item.children; track child.route) {
+                                    <li>
+                                        <a class="nav-link ps-4" [routerLink]="child.route" routerLinkActive="active"
+                                            [routerLinkActiveOptions]="{ exact: true }"
+                                            (click)="setActiveMenu(child.route)">
+                                            {{ child.label }}
+                                        </a>
+                                    </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    } @else {
+                    <a class="nav-link text-center" [routerLink]="item.route" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }" (click)="setActiveMenu(item.route)">
+                        <strong>{{ item.label }}</strong>
+                    </a>
+                    }
+                </li>
+                }
+            </ul>
+        </div>
+
+
+
+        <!-- Menu desktop inline -->
+        <div class="d-none d-xl-block desktop-menu">
+            <ul class="navbar-nav mx-auto">
+                @for (item of menuItems(); track item.route) {
+                <li class="nav-item" [class.dropdown]="item.children" (mouseenter)="item.children && showDropdown(item)"
+                    (mouseleave)="item.children && hideDropdown(item)">
+                    <a class="nav-link" [class.dropdown-toggle]="item.children"
+                        [routerLink]="!item.children ? item.route : null" routerLinkActive="active"
+                        [routerLinkActiveOptions]="{ exact: true }"
+                        (click)="!item.children && setActiveMenu(item.route)">
+                        <strong>{{ item.label }}</strong>
+                    </a>
+
+                    @if (item.children) {
+                    <ul class="dropdown-menu" [class.show]="item.showDropdown">
+                        @for (child of item.children; track child.route) {
+                        <li>
+                            <a class="dropdown-item" [routerLink]="child.route" (click)="setActiveMenu(child.route)">{{
+                                child.label }}</a>
+                        </li>
+                        }
+                    </ul>
+                    }
+                </li>
+                }
+            </ul>
         </div>
     </div>
 </nav>

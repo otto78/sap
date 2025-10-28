@@ -10,6 +10,4 @@ import { TopHeader } from "./components/top-header/top-header";
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
-  protected readonly title = signal('Sap');
-}
+export class App {}

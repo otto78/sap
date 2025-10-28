@@ -11,4 +11,11 @@ export const routes: Routes = [
   { path: 'services', component: Services },
   { path: 'faq', component: Faq },
   { path: 'contact', component: Contact },
+  { path: 'services/bambini', component: Services },
+  { path: 'services/adolescenti', component: Services },
+  { path: 'services/adulti', component: Services },
+  { path: 'services/anziani', component: Services },
+
+  // catch-all (404)
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
