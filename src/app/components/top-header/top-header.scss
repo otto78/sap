@@ -17,18 +17,21 @@
     transition: color.$transition;
     display: inline-block;
 
-    &:hover {
-        color: color.$button;
-    }
-
     i {
         margin-right: 5px;
         color: color.$secondary-color;
+        transition: color.$transition; 
+    }
 
-        &:hover {
-            color: color.$button;
+
+    &:hover {
+        color: color.$button;
+
+        i {
+            color: color.$button
         }
     }
+
 }
 
 .btn-appointment {
