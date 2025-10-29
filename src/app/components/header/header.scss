@@ -84,26 +84,30 @@
 
     // Dropdown
     .dropdown-menu {
-      display: none;
+      display: block; // ✨ Cambiato da none a block
       position: absolute;
       top: 100%;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translateX(-50%) translateY(-10px); // ✨ Inizia 10px più in alto
       background-color: #fff;
       border: none;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
       min-width: 220px;
       padding: 0.5rem 0;
-      opacity: 0;
+      opacity: 0; // ✨ Parte invisibile
       visibility: hidden;
-      transition: all 0.2s ease-in-out;
+      pointer-events: none; // ✨ Non intercetta eventi quando nascosto
+      transition: opacity 0.3s ease-in-out, 
+                  transform 0.3s ease-in-out, 
+                  visibility 0.3s; // ✨ Animazioni fluide
     }
 
     &:hover .dropdown-menu,
     .dropdown-menu.show {
-      display: block;
-      opacity: 1;
+      opacity: 1; // ✨ Diventa visibile
       visibility: visible;
+      pointer-events: auto; // ✨ Ora intercetta eventi
+      transform: translateX(-50%) translateY(0); // ✨ Scende nella posizione finale
     }
 
     .dropdown-item {
@@ -111,6 +115,7 @@
       font-weight: 400;
       padding: 0.5rem 1rem;
       position: relative;
+      background-color: transparent !important;
 
       &::after {
         content: "";
