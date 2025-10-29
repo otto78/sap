@@ -1,26 +1,29 @@
 <footer class="main-footer">
-  <div class="container py-5">
+  <div class="footer-background"></div>
+  <div class="container py-5 position-relative">
     <div class="row g-4">
+
       <!-- Colonna 1: Info Studio -->
-      <div class="col-12 col-md-6 col-lg-3">
+      <div class="col-12 col-md-6 col-lg-4">
         <h5 class="footer-title mb-3">Studio</h5>
         <div class="footer-content">
           <p class="mb-2">
-            <i class="bi bi-geo-alt-fill me-2"></i>
-            <strong>San Stino di Livenza</strong>
+            Attualmente svolgo attività clinica presso la sede del 
+            <a href="https://www.cems-salute.com/" class="footer-link" target="_blank">CEMS</a>
           </p>
-          <p class="text-muted small mb-3">Via Example, 123<br>30029 VE</p>
-          
           <p class="mb-2">
-            <i class="bi bi-geo-alt-fill me-2"></i>
-            <strong>San Donà di Piave</strong>
+            <a href="https://www.google.it/maps/place/Viale+Trieste,+112,+30029+San+Stino+di+Livenza+VE/@45.7266409,12.6893418,759m/data=!3m2!1e3!4b1!4m6!3m5!1s0x477be21c09dbcda9:0x29fa320f5102e961!8m2!3d45.7266409!4d12.6893418!16s%2Fg%2F11y7m78q_j?hl=it&entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D" class="footer-link" target="_blank">
+              <i class="bi bi-geo-alt-fill me-2"></i>
+              <strong>San Stino di Livenza</strong>
+            </a>
           </p>
-          <p class="text-muted small">Via Example, 456<br>30027 VE</p>
+          <p class="text-muted small mb-3">Viale Trieste, 112 <br>30029 VE</p>
+          <p class="mb-2">Per qualsiasi domanda o per richiedere una consulenza, non esitare a contattarmi.</p>
         </div>
       </div>
 
       <!-- Colonna 2: Contatti -->
-      <div class="col-12 col-md-6 col-lg-3">
+      <div class="col-12 col-md-6 col-lg-4">
         <h5 class="footer-title mb-3">Contatti</h5>
         <div class="footer-content">
           <p class="mb-2">
@@ -35,55 +38,61 @@
             <i class="bi bi-whatsapp me-2"></i>
             <a href="https://wa.me/393469730190" target="_blank" class="footer-link">WhatsApp</a>
           </p>
-          
-          <div class="social-links mt-3">
-            @for (social of socialLinks(); track social.url) {
-              <a [href]="social.url" target="_blank" class="social-icon me-3" [attr.aria-label]="social.label">
-                <i [class]="'bi ' + social.icon"></i>
-              </a>
-            }
-          </div>
+          <p class="mb-3">
+            <i class="bi bi-linkedin me-2"></i>
+            <a href="https://it.linkedin.com/in/sefora-antonello-1587b6153" target="_blank" class="footer-link">LinkedIn</a>
+          </p>
         </div>
       </div>
 
       <!-- Colonna 3: Link Utili -->
-      <div class="col-12 col-md-6 col-lg-3">
+      <div class="col-12 col-md-6 col-lg-4">
         <h5 class="footer-title mb-3">Link Utili</h5>
-        <ul class="footer-links list-unstyled">
-          <li><a routerLink="/" class="footer-link">Home</a></li>
-          <li><a routerLink="/services" class="footer-link">Di cosa mi occupo</a></li>
-          <li><a routerLink="/about" class="footer-link">Su di me</a></li>
-          <li><a routerLink="/faq" class="footer-link">FAQ</a></li>
-          <li><a routerLink="/contact" class="footer-link">Contatti</a></li>
-          <li><a routerLink="/privacy" class="footer-link">Privacy Policy</a></li>
-        </ul>
-      </div>
-
-      <!-- Colonna 4: Orari e Info -->
-      <div class="col-12 col-md-6 col-lg-3">
-        <h5 class="footer-title mb-3">Orari di Ricevimento</h5>
         <div class="footer-content">
-          <p class="mb-2"><strong>Su appuntamento</strong></p>
-          <p class="text-muted small mb-3">Lunedì - Venerdì<br>9:00 - 19:00</p>
-          
-          <p class="mb-2 mt-4">
-            <i class="bi bi-person-badge-fill me-2"></i>
-            <strong>Albo Psicologi</strong>
-          </p>
-          <p class="text-muted small">N. 10993</p>
+
+          <!-- Logo Ordine Psicologi Veneto con info -->
+          <div class="mb-3 d-flex justify-content-between align-items-center">
+            <a href="https://www.ordinepsicologiveneto.it/" target="_blank" class="d-inline-block me-3">
+              <img src="/images/logoOPV.svg" alt="Ordine Psicologi Veneto" class="footer-logo">
+            </a>
+            <div>
+              <p class="mb-1">
+                <i class="bi bi-person-badge-fill me-2"></i>
+                <strong>Albo Psicologi Veneto</strong>
+              </p>
+              <p class="text-muted small mb-0">N. 10993</p>
+            </div>
+          </div>
+
+          <!-- Logo CEMS e Guida Psicologi sulla stessa linea -->
+          <div class="d-flex gap-3 align-items-center">
+            <!-- Logo Guida Psicologi -->
+            <div class="flex-fill">
+              <a href="https://www.guidapsicologi.it/" target="_blank" class="d-block">
+                <img src="/images/logoGuida_psicologi.png" alt="Guida Psicologi" class="footer-logo-full">
+              </a>
+            </div>
+            <!-- Logo CEMS -->
+            <div class="flex-fill">
+              <a href="https://www.cems-salute.com/" target="_blank" class="d-block">
+                <img src="/images/logoCEMS.avif" alt="CEMS" class="footer-logo-full">
+              </a>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
 
     <!-- Separatore -->
-    <hr class="footer-divider my-4">
+    <hr class="footer-divider my-5">
 
     <!-- Copyright -->
     <div class="row">
       <div class="col-12 text-center">
         <p class="copyright mb-0">
-          © {{ currentYear }} Dott.ssa Sefora Antonello - Psicologa | 
-          P.IVA 04876540274 | 
+          © {{ currentYear }} Dott.ssa Sefora Antonello - Psicologa |
+          P.IVA 04876540274 |
           <a routerLink="/privacy" class="footer-link">Privacy Policy</a>
         </p>
       </div>

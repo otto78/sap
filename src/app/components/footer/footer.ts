@@ -17,22 +17,4 @@ interface SocialLink {
 })
 export class Footer {
   currentYear = new Date().getFullYear();
-
-  socialLinks = signal<SocialLink[]>([
-    {
-      icon: 'bi-linkedin',
-      url: 'https://it.linkedin.com/in/sefora-antonello-1587b6153',
-      label: 'LinkedIn',
-    },
-    {
-      icon: 'bi-whatsapp',
-      url: 'https://wa.me/393469730190',
-      label: 'Whatsapp',
-    },
-    {
-      icon: 'bi-envelope',
-      url: 'mailto:antonellosefora@gmail.com',
-      label: 'Gmail',
-    },
-  ]);
 }
