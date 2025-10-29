@@ -1,8 +1,9 @@
 import { Component, signal } from '@angular/core';
+import { Button } from "../button/button";
 
 @Component({
   selector: 'app-top-header',
-  imports: [],
+  imports: [Button],
   templateUrl: './top-header.html',
   styleUrl: './top-header.scss',
   standalone: true,
