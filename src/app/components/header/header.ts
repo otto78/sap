@@ -1,3 +1,4 @@
+// header.component.ts
 import { Component, HostListener, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -6,7 +7,8 @@ interface MenuItem {
   label: string;
   route: string;
   children?: MenuItem[];
-  showDropdown?: boolean; // 👈 serve per il comportamento hover
+  showDropdown?: boolean;
+  forceHide?: boolean; // 🎯 Nuova proprietà per forzare la chiusura
 }
 
 interface SocialLink {
@@ -35,9 +37,10 @@ export class Header {
         { label: 'Bambini', route: '/services/bambini' },
         { label: 'Adolescenti', route: '/services/adolescenti' },
         { label: 'Adulti', route: '/services/adulti' },
-        { label: 'Anziani', route: '/services/anziani' },
+        { label: 'Terza età', route: '/services/terzaEta' },
       ],
-      showDropdown: false, // 👈 inizializzato
+      showDropdown: false,
+      forceHide: false, // 🎯 Inizializzato
     },
     { label: 'Su di me', route: '/about' },
     { label: 'Faq', route: '/faq' },
@@ -82,10 +85,26 @@ export class Header {
   }
 
   showDropdown(item: MenuItem) {
-    item.showDropdown = true;
+    if (!item.forceHide) {
+      item.showDropdown = true;
+    }
   }
 
   hideDropdown(item: MenuItem) {
     item.showDropdown = false;
+  }
+
+  // 🎯 Chiamato quando si clicca su un link del dropdown
+  onDropdownItemClick(parentItem: MenuItem, childRoute: string) {
+    // Forza la chiusura del dropdown
+    parentItem.forceHide = true;
+    parentItem.showDropdown = false;
+    
+    // Dopo 500ms riabilita il dropdown
+    setTimeout(() => {
+      parentItem.forceHide = false;
+    }, 500);
+    
+    this.setActiveMenu(childRoute);
   }
 }
