@@ -1,1 +1,37 @@
 <app-title></app-title>
+
+<!-- faq.html -->
+<div class="container py-4 py-md-5">
+  <div class="row g-3 g-md-4">
+    <!-- Tabs Sidebar -->
+    <div class="col-12 col-lg-5">
+      <div class="d-flex flex-column gap-2 gap-md-3">
+        <div 
+          *ngFor="let item of faqItems" 
+          class="tab-title p-3 p-md-4"
+          [class.active]="activeTab === item.id"
+          (click)="selectTab(item.id)"
+          role="tab"
+          [attr.aria-selected]="activeTab === item.id"
+          [attr.aria-controls]="'tab-content-' + item.id">
+          <a class="text-decoration-none d-block">{{ item.question }}</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content Area -->
+    <div class="col-12 col-lg-7">
+      <div class="tabs-content answer-col-color p-4 p-md-5 rounded shadow-sm">
+        <div 
+          *ngFor="let item of faqItems"
+          [id]="'tab-content-' + item.id"
+          class="tab-content"
+          [class.active]="activeTab === item.id"
+          role="tabpanel"
+          [attr.aria-labelledby]="'tab-title-' + item.id">
+          <div [innerHTML]="item.answer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
