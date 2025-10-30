@@ -1,0 +1,88 @@
+@use "./../../../styles.scss" as color;
+
+// ===========================
+// Stili del Componente (Basati sulla struttura HTML fornita)
+// ===========================
+
+// Contenitore principale (corrisponde a <section class="container my-5">)
+.about-me-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  // Stile generale per il testo del corpo
+  p, ul, li {
+    // Richiesta: Testo in text-dark-gray-light
+    color: color.$text-gray-light; 
+    line-height: 1.7;
+  }
+}
+
+// Stile per il titolo (corrisponde a <h2>)
+.about-me-title {
+  // Richiesta: Font Playfair Display
+  font-family: color.$title-font;
+  font-weight: 700;
+  color: color.$text-dark-gray; 
+  font-size: 2.5rem; 
+
+  // Richiesta: Titolo giustificato a sinistra
+  text-align: left;
+}
+
+// Stile per il divisore (corrisponde a <hr>)
+.about-me-divider {
+  // Rimuove gli stili predefiniti di Bootstrap e li adatta
+  margin-left: 0; // Richiesta: giustificato a sinistra
+  width: 60px; // Richiesta: deve essere corto
+  border: none;
+  height: 2px;
+  // Richiesta: deve essere grigio chiaro
+  background-color: color.$text-gray-light; 
+  opacity: 0.3;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+// Stile per l'immagine di profilo (solo per riferimento se ci fossero stili specifici)
+.profile-image {
+  max-width: 100%;
+  height: auto;
+}
+
+// Stile per i link e gli hover
+.card-body a {
+  // Richiesta: colore dei link $button
+  color: color.$button; 
+  transition: color 0.3s ease;
+  font-weight: 500; 
+
+  &:hover {
+    // Colore al passaggio del mouse ($buttonHover)
+    color: color.$buttonHover; 
+  }
+}
+
+// Stile per le icone (se usi Bootstrap Icons con classi come bi-check-lg)
+.card-body .bi {
+    // Colore icone come il link ($button)
+    color: color.$button; 
+}
+
+// Stili specifici per la lista
+.list-unstyled li {
+    margin-bottom: 0.5rem;
+}
+
+// ===========================
+// Ajustamenti Responsivi
+// ===========================
+
+// Allineamento del titolo e divisore per schermi più piccoli
+@media (max-width: 767px) {
+    // Sul mobile il titolo è centrato
+    .about-me-title, .about-me-divider {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
