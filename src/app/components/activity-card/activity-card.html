@@ -2,29 +2,28 @@
   <div class="card-body p-4">
     <div class="row align-items-center g-4">
 
-      <!-- Immagine circolare sulla sinistra -->
-      <div class="col-auto">
-        <div class="activity-image-wrapper rounded-circle overflow-hidden shadow">
+      <!-- Immagine: full-width sotto 992px, col-auto e circolare sopra -->
+      <div class="col-12 col-lg-auto d-flex justify-content-center order-1 order-lg-1">
+        <div class="activity-image-wrapper">
           @if (activity().img != "") {
             <img
               [src]="activity().img"
               [alt]="activity().title"
-              class="w-100 h-100"
-              style="object-fit: cover;"
+              class="activity-image"
             >
           } @else {
-            <div class="d-flex align-items-center justify-content-center bg-light w-100 h-100">
-                <i class="bi bi-file-earmark-image"></i>
+            <div class="placeholder d-flex align-items-center justify-content-center w-100 h-100">
+              <i class="bi bi-file-earmark-image"></i>
             </div>
           }
         </div>
       </div>
 
-      <!-- Contenuto sulla destra -->
-      <div class="col ps-4">
+      <!-- Testo: sotto l'immagine su mobile -->
+      <div class="col-12 col-lg ps-4 order-2 order-lg-2">
         <h3 class="activity-title mb-3">{{ activity().title }}</h3>
         <p class="activity-description mb-3">{{ activity().description }}</p>
-        <div class="text-end mt-4">
+        <div class="text-center text-lg-end mt-4">
           <app-button>Scopri di più</app-button>
         </div>
       </div>
