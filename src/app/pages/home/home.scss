@@ -222,3 +222,139 @@
     padding: 60px 0;
   }
 }
+
+
+.about-section {
+  position: relative;
+  background: 
+    linear-gradient(
+      rgba($primary-color, 0.25),
+      rgba($primary-color-light, 0.35)
+    ),
+    url("/images/sfondo-frasi.png") center/cover no-repeat;
+//   overflow: hidden;
+  color: $text-dark;
+  height: 608px;
+  margin-top: 100px;
+
+  .container {
+    position: relative;
+    z-index: 2; // sopra lo sfondo
+  }
+
+  // Layer semitrasparente verde acqua per unificare il tono
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(34, 202, 180, 0.349);
+    mix-blend-mode: multiply;
+    z-index: 1;
+  }
+
+  .about-text {
+    position: relative;
+    z-index: 3;
+    padding-right: 2.5rem;
+
+    .about-title {
+      font-family: $title-font;
+      font-size: 2.8rem;
+      color: $text-dark-gray;
+      margin-bottom: 1rem;
+    }
+
+    .about-subtitle {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: $text-gray;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-description {
+      font-size: 1.1rem;
+      color: $text-gray-light;
+      line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+
+    .btn-custom {
+      background-color: $button-color;
+      color: #fff;
+      font-size: 1.1rem;
+      padding: 0.9rem 2rem;
+      border-radius: 0.5rem;
+      transition: $transition;
+      text-decoration: none;
+
+      &:hover {
+        background-color: $buttonHover;
+        color: $text-dark;
+      }
+    }
+  }
+
+  .about-image-wrapper {
+    position: relative;
+    text-align: center;
+    margin-top: -15rem; // immagine che “esce” sopra il bordo
+
+    .about-image-container {
+      position: relative;
+      display: inline-block;
+      border-radius: 1rem;
+      overflow: hidden;
+    //   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .about-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      position: relative;
+      z-index: 2;
+    }
+
+    // layer per virare il colore verso verde acqua
+    .about-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba($primary-color, 0.4);
+      z-index: 3;
+      mix-blend-mode: multiply;
+    }
+  }
+}
+
+// 📱 Responsività
+@media (max-width: 991px) {
+  .about-section {
+    padding: 4rem 0;
+
+    .about-text {
+      padding-right: 0;
+      text-align: center;
+    }
+
+    .about-image-wrapper {
+      margin-top: 2rem;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .about-section {
+    .about-title {
+      font-size: 2rem;
+    }
+
+    .about-subtitle {
+      font-size: 1rem;
+    }
+
+    .about-description {
+      font-size: 1rem;
+    }
+  }
+}
