@@ -1,0 +1,167 @@
+@use "./../../../styles.scss" as *;
+@use "sass:color";
+
+.container {
+  font-size: 1.125rem !important; // 18px base
+
+  .card {
+    border: none;
+    border-radius: 0.75rem; // 12px
+    background-color: $primary-color-light;
+    
+    .card-body {
+      padding: 2.5rem; // 40px
+    }
+  }
+
+  .text-muted {
+    color: $text-gray !important;
+    // font-size: 1rem; // 16px
+  }
+
+  .alert {
+    font-size: 1rem; // 16px
+    border-radius: 0.5rem; // 8px
+    
+    &.alert-success {
+      background-color: color.adjust($primary-color, $lightness: 35%);
+      border-color: $primary-color;
+      color: color.adjust($primary-color, $lightness: -30%);
+    }
+
+    &.alert-danger {
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      color: #721c24;
+    }
+  }
+
+  form {
+    .form-label {
+      font-weight: 500;
+      color: $button;
+    //   font-size: 1rem; // 16px
+      margin-bottom: 0.5rem; // 8px
+    }
+
+    .form-control,
+    .form-select {
+    //   font-size: 1rem; // 16px
+      padding: 0.625rem 0.75rem; // 10px 12px
+      border-color: #ddd;
+      color: $text-dark-gray;
+      transition: $transition;
+
+      &::placeholder {
+        color: $text-gray-light;
+      }
+
+      &:focus {
+        border-color: $primary-color;
+        box-shadow: 0 0 0 0.25rem rgba($primary-color, 0.25);
+        outline: none;
+      }
+
+      &.is-invalid {
+        border-color: #dc3545;
+
+        &:focus {
+          box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+        }
+      }
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 7.5rem; // 120px
+    }
+
+    .form-check {
+      font-size: 0.9375rem; // 15px
+
+      .form-check-input {
+        width: 1.125rem; // 18px
+        height: 1.125rem; // 18px
+        margin-top: 0.125rem;
+        border-color: #ddd;
+        cursor: pointer;
+
+        &:checked {
+          background-color: $button;
+          border-color: $button;
+        }
+
+        &:focus {
+          border-color: $primary-color;
+          box-shadow: 0 0 0 0.25rem rgba($primary-color, 0.25);
+        }
+
+        &.is-invalid {
+          border-color: #dc3545;
+        }
+      }
+
+      .form-check-label {
+        color: $text-dark-gray;
+        cursor: pointer;
+
+        a {
+          color: $button;
+          transition: $transition;
+
+          &:hover {
+            color: $buttonHover;
+          }
+        }
+      }
+    }
+
+    .invalid-feedback {
+      font-size: 0.875rem; // 14px
+      color: #dc3545;
+    }
+
+    .btn-primary {
+      background-color: $button;
+      border-color: $button;
+      color: white;
+      font-weight: 500;
+    //   font-size: 1rem; // 16px
+      padding: 0.75rem 3rem; // 12px 48px
+      border-radius: 0.5rem; // 8px
+      transition: $transition;
+
+      &:hover:not(:disabled) {
+        background-color: $buttonHover;
+        border-color: $buttonHover;
+        transform: translateY(-0.125rem); // -2px
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 1;
+        background-color: color.adjust($button, $lightness: 15%);
+        border-color: color.adjust($button, $lightness: 20%);
+      }
+
+      .spinner-border-sm {
+        width: 1rem; // 16px
+        height: 1rem; // 16px
+        border-width: 0.125rem; // 2px
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .container .card .card-body {
+    padding: 1.5rem; // 24px
+  }
+
+  .container form .btn-primary {
+    padding: 0.625rem 2rem; // 10px 32px
+    font-size: 0.9375rem; // 15px
+  }
+}

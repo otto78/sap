@@ -32,19 +32,19 @@ export class Header {
     { label: 'Home', route: '/' },
     {
       label: 'Di cosa mi occupo',
-      route: '/services',
+      route: '/servizi',
       children: [
-        { label: 'Bambini', route: '/services/bambini' },
-        { label: 'Adolescenti', route: '/services/adolescenti' },
-        { label: 'Adulti', route: '/services/adulti' },
-        { label: 'Terza età', route: '/services/terzaEta' },
+        { label: 'Bambini', route: '/servizi/bambini' },
+        { label: 'Adolescenti', route: '/servizi/adolescenti' },
+        { label: 'Adulti', route: '/servizi/adulti' },
+        { label: 'Terza età', route: '/servizi/terzaEta' },
       ],
       showDropdown: false,
       forceHide: false, // 🎯 Inizializzato
     },
-    { label: 'Su di me', route: '/about' },
-    { label: 'Faq', route: '/faq' },
-    { label: 'Contatti', route: '/contact' },
+    { label: 'Su di me', route: '/chi-sono' },
+    { label: 'Domande frequenti', route: '/faq' },
+    { label: 'Contatti', route: '/contatti' },
   ]);
 
   socialLinks = signal<SocialLink[]>([

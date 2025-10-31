@@ -1,95 +1,97 @@
-@use '../../../styles.scss' as *;
+@use "../../../styles.scss" as *;
 @use "sass:color";
 
 // ====== CARD BASE ======
 .card {
-  transition: $transition;
+    transition: $transition;
 
-  &:hover {
-    transform: translateY(-0.25rem);
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12) !important;
-  }
+    &:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12) !important;
+    }
 }
 
 // ====== IMMAGINE ATTIVITÀ ======
 .activity-image-wrapper {
-  width: 100%;
-  aspect-ratio: 16 / 9; // Mobile: proporzioni rettangolari
-  overflow: hidden;
-  border-radius: 0; // Mobile: nessuna forma circolare
-  display: block;
-  background: $primary-color-light; // Colore di fallback se manca immagine
-
-  .placeholder {
     width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    aspect-ratio: 16 / 9; // Mobile: proporzioni rettangolari
+    overflow: hidden;
+    border-radius: 0; // Mobile: nessuna forma circolare
+    display: block;
+    background: $primary-color-light; // Colore di fallback se manca immagine
 
-    i {
-      font-size: 3rem;
-      color: $text-gray-light;
-      opacity: 0.6;
+    .placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        i {
+            font-size: 3rem;
+            color: $text-gray-light;
+            opacity: 0.6;
+        }
     }
-  }
 }
 
 // L’immagine dentro al wrapper
 .activity-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 // ====== TESTO ======
 .activity-title {
-  font-family: $title-font;
-  font-size: 1.875rem; // 30px
-  color: $text-dark-gray;
-  font-weight: 600;
+    font-family: $title-font;
+    font-size: 1.875rem; // 30px
+    color: $text-dark-gray;
+    font-weight: 600;
 }
 
 .activity-description {
-  font-size: 1.125rem; // 18px
-  color: $text-dark;
-  text-align: justify;
-  line-height: 1.6;
+    font-size: 1.125rem; // 18px
+    color: $text-dark;
+    text-align: justify;
+    line-height: 1.6;
 }
 
 // ====== RESPONSIVE ======
 @media (min-width: 992px) {
-  .activity-image-wrapper {
-    width: 18.75rem;  // 300px
-    height: 18.75rem; // 300px
-    aspect-ratio: auto; // Disattiva proporzione fissa
-    border-radius: 50%; // 🔹 Diventa circolare
-  }
+    .activity-image-wrapper {
+        width: 18.75rem; // 300px
+        height: 18.75rem; // 300px
+        aspect-ratio: auto; // Disattiva proporzione fissa
+        border-radius: 50%; // 🔹 Diventa circolare
+    }
 
-  .activity-image {
-    border-radius: 50%;
-  }
+    .activity-image {
+        border-radius: 50%;
+    }
 
-  .activity-image-wrapper .placeholder i {
-    font-size: 5rem;
-  }
+    .activity-image-wrapper .placeholder i {
+        font-size: 5rem;
+    }
 
-  .activity-title {
-    font-size: 1.875rem; // 30px
-  }
+    .activity-title {
+        font-size: 1.875rem; // 30px
+    }
 
-  .activity-description {
-    font-size: 1.125rem; // 18px
-  }
+    .activity-description {
+        font-size: 1.125rem; // 18px
+    }
 }
 
 @media (max-width: 991.98px) {
-  .activity-title {
-    font-size: 1.5rem; // 24px
-  }
+    .activity-title {
+        font-size: 1.5rem; // 24px
+    }
 
-  .activity-description {
-    font-size: 1rem; // 16px
-  }
+    .activity-description {
+        font-size: 1rem; // 16px
+    }
 }
+
+

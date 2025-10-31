@@ -14,14 +14,14 @@ export class Title implements OnInit, OnDestroy {
   private destroy$ = new Subject<void>();
 
   private titleMap: { [key: string]: string } = {
-    '/about': 'Chi Sono',
-    '/services/bambini': 'Bambini',
-    '/services/adolescenti': 'Adolescenti',
-    '/services/adulti': 'Adulti',
-    '/services/terzaEta': 'Terza età',
+    '/chi-sono': 'Chi Sono',
+    '/servizi/bambini': 'Bambini',
+    '/servizi/adolescenti': 'Adolescenti',
+    '/servizi/adulti': 'Adulti',
+    '/servizi/terzaEta': 'Terza età',
     '/faq': 'Domande Frequenti',
-    '/contact': 'Contattami',
-    '/privacy': 'Privacy Policy',
+    '/contatti': 'Contattami',
+    '/privacy': 'Informativa sulla privacy',
   };
 
   constructor(private router: Router) {}

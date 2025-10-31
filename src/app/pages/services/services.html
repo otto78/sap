@@ -4,8 +4,8 @@
     <div class="row justify-content-center mt-5">
         <div class="col-12 col-md-10">
             <!-- For di tutte le attività -->
-            @for (activity of activities(); track activity.title) {
-                <app-activity-card [activity]="activity" class="mb-4 d-block"></app-activity-card>
+            @for (activity of activities(); track activity.title; let i = $index) {
+                <app-activity-card [activity]="activity" class="mb-4 d-block" [ngClass]="'fade-' + (i + 1)"></app-activity-card>
             }
             
             @if (activities().length === 0) {

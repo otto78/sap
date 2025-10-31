@@ -2,6 +2,7 @@ import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Title } from '../../components/title/title';
 import { ActivityCard } from '../../components/activity-card/activity-card';
+import { NgClass } from '@angular/common';
 
 export enum AgeCategory {
   BAMBINI = 'bambini',
@@ -19,7 +20,7 @@ export interface Activity {
 
 @Component({
   selector: 'app-services',
-  imports: [Title, ActivityCard],
+  imports: [Title, ActivityCard, NgClass],
   templateUrl: './services.html',
   styleUrl: './services.scss',
   standalone: true,
