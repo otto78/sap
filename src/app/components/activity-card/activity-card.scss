@@ -1,0 +1,52 @@
+@use '../../../styles.scss' as *;
+
+.card {
+    transition: $transition;
+    // background-color: $primary-color-light;
+    
+    &:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12) !important;
+    }
+}
+
+.activity-image-wrapper {
+    width: 18.75rem; // 300px
+    height: 18.75rem; // 300px;
+
+    i{
+        font-size: 25rem;
+        color: $text-gray-light;
+        opacity: 0.5;
+    }
+}
+
+.activity-title {
+    font-family: $title-font;
+    font-size: 1.875rem; // 30px
+    color: $text-dark-gray;
+    font-weight: 600;
+}
+
+.activity-description {
+    font-size: 1.125rem; // 18px
+    color: $text-dark;
+    text-align: justify;
+    line-height: 1.6;
+}
+
+// Responsive
+@media (max-width: 768px) {
+    .activity-image-wrapper {
+        width: 12.5rem; // 200px
+        height: 12.5rem; // 200px
+    }
+    
+    .activity-title {
+        font-size: 1.5rem; // 24px
+    }
+    
+    .activity-description {
+        font-size: 1rem; // 16px
+    }
+}

@@ -1,10 +1,18 @@
 <app-title></app-title>
 
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-12 col-md-9">
+    <div class="row justify-content-center mt-5">
+        <div class="col-12 col-md-10">
             <!-- For di tutte le attività -->
-            <app-activity-card></app-activity-card>
+            @for (activity of activities(); track activity.title) {
+                <app-activity-card [activity]="activity" class="mb-4 d-block"></app-activity-card>
+            }
+            
+            @if (activities().length === 0) {
+                <div class="alert alert-info text-center">
+                    <p class="mb-0">Nessuna attività disponibile per questa categoria.</p>
+                </div>
+            }
         </div>
     </div>
 </div>

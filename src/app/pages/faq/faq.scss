@@ -1,49 +1,51 @@
 // faq.scss
-@use "./../../../styles.scss" as color;
+@use "./../../../styles.scss" as *;
+@use "sass:color";
+
 
 .tab-title {
-  // background-color: color.$secondary-color;
+  // background-color: $secondary-color;
   border-left: 0.1875rem solid transparent; // 3px
   cursor: pointer;
-  transition: color.$transition;
+  transition: $transition;
   border-radius: 0.25rem; // 4px
   font-size: 1.125rem; // 18px
 
   &:hover {
-    background-color: darken(color.$secondary-color, 3%);
-    border-left-color: color.$text-gray;
+    background-color: adjust($secondary-color, $lightness: -3%);
+    border-left-color: $text-gray;
   }
 
   &.active {
-    background-color: color.$secondary-color;
-    border-left-color: color.$button;
-    border-bottom: 1px solid color.$button;
+    background-color: $secondary-color;
+    border-left-color: $button;
+    border-bottom: 1px solid $button;
     box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1); // 0 2px 8px
   }
 
   a {
-    color: color.$text-dark;
+    color: $text-dark;
     font-weight: 500;
-    transition: color.$transition;
+    transition: $transition;
   }
 
   &.active a {
-    color: color.$button;
+    color: $button;
   }
 }
 
 .tabs-content {
   position: relative;
   min-height: 31.25rem; // 500px
-  background-color: color.$secondary-color;
-  border: 1px solid color.$primary-color;
+  background-color: $secondary-color;
+  border: 1px solid $primary-color;
 }
 
 .tab-content {
   display: none;
   animation: fadeIn 0.3s ease;
   line-height: 1.8;
-  color: color.$text-gray-light;
+  color: $text-gray-light;
   font-size: 1.125rem; // 18px
 
   &.active {
@@ -53,7 +55,7 @@
   :deep(b),
   :deep(strong) {
     font-weight: 600;
-    color: color.$button;
+    color: $button;
   }
 
   :deep(br) {
