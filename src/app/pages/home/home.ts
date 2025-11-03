@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { SliderComponent } from "../../components/slider/slider";
 
 interface Service {
   title: string;
@@ -11,7 +12,7 @@ interface Service {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, SliderComponent],
   templateUrl: './home.html',
   styleUrls: ['./home.scss']
 })

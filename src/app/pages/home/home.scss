@@ -225,26 +225,24 @@
 
 
 
-
+// |----------------------------|
+// |----- SECTION ABOUT ME -----|
+// |----------------------------|
 
 .about-section {
   position: relative;
-  background: linear-gradient(
-      to right,
-      rgba(72, 147, 156, 0.95),
-      rgba(87, 167, 166, 0.95)
-    );
+  background: url("/images/sfondo-frasi.png") center/cover no-repeat;
   color: $text-dark;
   padding: 0.5rem 0;
   overflow: visible; // Permette all'immagine di uscire
   margin-top: 8rem; // Spazio per l'immagine che esce sopra
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25), 
+              0 4px 15px rgba(0, 0, 0, 0.15); // Ombra per dare rilievo alla section
 
   .container {
     position: relative;
     z-index: 2;
   }
-
-  // Rimosso ::after che creava un ulteriore overlay
 
   .about-text {
     position: relative;
@@ -259,6 +257,8 @@
       margin-bottom: 1rem;
       font-weight: 600;
       text-align: left;
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5),
+                   1px 1px 4px rgba(0, 0, 0, 0.4); // Ombra più pronunciata per il titolo
     }
 
     .about-subtitle {
@@ -268,6 +268,8 @@
       margin-bottom: 1.5rem;
       line-height: 1.6;
       text-align: justify;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.5),
+                   1px 1px 3px rgba(0, 0, 0, 0.4); // Ombra per il sottotitolo
     }
 
     .about-description {
@@ -277,6 +279,8 @@
       margin-bottom: 1.5rem;
       font-weight: 300;
       text-align: justify;
+      text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6),
+                   1px 1px 3px rgba(0, 0, 0, 0.5); // Ombra per la descrizione
     }
 
     .btn-custom {
@@ -289,10 +293,13 @@
       transition: $transition;
       text-decoration: none;
       display: inline-block;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); // Ombra per il bottone
 
       &:hover {
         background-color: rgba(255, 255, 255, 0.2);
         transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); // Ombra più forte al hover
       }
     }
   }
@@ -311,6 +318,8 @@
       display: inline-block;
       max-width: 550px;
       width: 80%;
+      filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.4))
+              drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)); // Ombra esterna all'immagine
     }
 
     .about-image {
@@ -335,6 +344,8 @@
       
       .about-image-container {
         max-width: 480px;
+        filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.35))
+                drop-shadow(0 6px 15px rgba(0, 0, 0, 0.25));
       }
       
       .about-image {
@@ -348,6 +359,8 @@
   .about-section {
     padding: 3rem 0 4rem;
     margin-top: 2rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), 
+                0 3px 12px rgba(0, 0, 0, 0.12);
 
     .about-text {
       padding-right: 0;
@@ -373,6 +386,8 @@
       
       .about-image-container {
         max-width: 400px;
+        filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3))
+                drop-shadow(0 5px 12px rgba(0, 0, 0, 0.2));
       }
       
       .about-image {
@@ -385,29 +400,37 @@
 @media (max-width: 767px) {
   .about-section {
     padding: 2.5rem 0 3rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18), 
+                0 2px 10px rgba(0, 0, 0, 0.1);
 
     .about-text {
       .about-title {
         font-size: 2rem;
+        text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
       }
 
       .about-subtitle {
         font-size: 1rem;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.35);
       }
 
       .about-description {
         font-size: 0.95rem;
+        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.35);
       }
 
       .btn-custom {
         font-size: 0.95rem;
         padding: 0.7rem 1.3rem;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
       }
     }
 
     .about-image-wrapper {
       .about-image-container {
         max-width: 350px;
+        filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25))
+                drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18));
       }
     }
   }
@@ -415,6 +438,9 @@
 
 @media (max-width: 575px) {
   .about-section {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15), 
+                0 2px 8px rgba(0, 0, 0, 0.08);
+
     .about-text {
       .about-title {
         font-size: 1.75rem;
@@ -427,9 +453,19 @@
     }
 
     .about-image-wrapper {
+      margin-top: -3rem;
       .about-image-container {
         max-width: 100%;
+        filter: drop-shadow(0 6px 15px rgba(0, 0, 0, 0.2))
+                drop-shadow(0 3px 8px rgba(0, 0, 0, 0.15));
       }
     }
   }
+}
+
+.quotes-section {
+    padding: 8rem 0;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
 }
