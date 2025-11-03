@@ -1,16 +1,18 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-slider',
   standalone: true,
   imports: [CommonModule],
-  templateUrl:'./slider.html',
-  styleUrls: ['./slider.scss']
+  templateUrl: 'slider.html',
+  styleUrls: ['slider.scss']
 })
 export class SliderComponent implements OnInit, OnDestroy {
-  currentIndex = 0;
-  prevIndex = -1;
+  // Signals invece di normali proprietà
+  currentIndex = signal(0);
+  prevIndex = signal(-1);
+
   private autoplayInterval: any;
   private touchStartX = 0;
   private touchEndX = 0;
@@ -55,7 +57,7 @@ export class SliderComponent implements OnInit, OnDestroy {
   startAutoplay() {
     this.autoplayInterval = setInterval(() => {
       this.nextSlide();
-    }, 5000); // Cambia slide ogni 5 secondi
+    }, 8000);
   }
 
   stopAutoplay() {
@@ -65,19 +67,21 @@ export class SliderComponent implements OnInit, OnDestroy {
   }
 
   nextSlide() {
-    this.prevIndex = this.currentIndex;
-    this.currentIndex = (this.currentIndex + 1) % this.quotes.length;
+    this.prevIndex.set(this.currentIndex());
+    this.currentIndex.set((this.currentIndex() + 1) % this.quotes.length);
   }
 
   prevSlide() {
-    this.prevIndex = this.currentIndex;
-    this.currentIndex = this.currentIndex === 0 ? this.quotes.length - 1 : this.currentIndex - 1;
+    this.prevIndex.set(this.currentIndex());
+    this.currentIndex.set(
+      this.currentIndex() === 0 ? this.quotes.length - 1 : this.currentIndex() - 1
+    );
   }
 
   goToSlide(index: number) {
-    if (index !== this.currentIndex) {
-      this.prevIndex = this.currentIndex;
-      this.currentIndex = index;
+    if (index !== this.currentIndex()) {
+      this.prevIndex.set(this.currentIndex());
+      this.currentIndex.set(index);
       this.stopAutoplay();
       this.startAutoplay();
     }
@@ -85,14 +89,16 @@ export class SliderComponent implements OnInit, OnDestroy {
 
   setupTouchHandlers() {
     if (typeof window !== 'undefined') {
-      const slider = document.querySelector('.quotes-wrapper');
+      const slider = document.querySelector('.quotes-wrapper') as HTMLElement | null;
       if (slider) {
-        slider.addEventListener('touchstart', (e: any) => {
-          this.touchStartX = e.changedTouches[0].screenX;
+        slider.addEventListener('touchstart', (e) => {
+          const touchEvent = e as TouchEvent;
+          this.touchStartX = touchEvent.changedTouches[0].screenX;
         });
 
-        slider.addEventListener('touchend', (e: any) => {
-          this.touchEndX = e.changedTouches[0].screenX;
+        slider.addEventListener('touchend', (e) => {
+          const touchEvent = e as TouchEvent;
+          this.touchEndX = touchEvent.changedTouches[0].screenX;
           this.handleSwipe();
         });
       }
@@ -105,10 +111,8 @@ export class SliderComponent implements OnInit, OnDestroy {
 
     if (Math.abs(diff) > swipeThreshold) {
       if (diff > 0) {
-        // Swipe left - next slide
         this.nextSlide();
       } else {
-        // Swipe right - previous slide
         this.prevSlide();
       }
       this.stopAutoplay();
