@@ -413,7 +413,6 @@
   }
 }
 
-
 // 📱 Responsività About Section
 @media (max-width: 1199px) {
   .about-section {
@@ -436,7 +435,6 @@
     }
   }
 }
-
 
 @media (max-width: 991px) {
   .about-section {
@@ -490,23 +488,30 @@
     .about-text {
       .about-title {
         font-size: 2rem;
-        text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.4);
+        text-shadow:
+          1px 1px 6px rgba(0, 0, 0, 0.6),
+          1px 1px 3px rgba(0, 0, 0, 0.5);
       }
 
       .about-subtitle {
         font-size: 1rem;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.35);
+        text-shadow:
+          1px 1px 6px rgba(0, 0, 0, 0.6),
+          1px 1px 3px rgba(0, 0, 0, 0.5);
       }
 
       .about-description {
         font-size: 0.95rem;
-        text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.35);
+        text-shadow:
+          1px 1px 6px rgba(0, 0, 0, 0.6),
+          1px 1px 3px rgba(0, 0, 0, 0.5);
       }
 
       .btn-custom {
         font-size: 0.95rem;
         padding: 0.7rem 1.3rem;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       }
     }
 
@@ -528,11 +533,22 @@
     .about-text {
       .about-title {
         font-size: 1.75rem;
+        text-shadow:
+          1px 1px 6px rgba(0, 0, 0, 0.6),
+          1px 1px 3px rgba(0, 0, 0, 0.5);
       }
 
       .about-description {
         font-size: 0.9rem;
         margin-bottom: 1.2rem;
+        text-shadow:
+          1px 1px 6px rgba(0, 0, 0, 0.6),
+          1px 1px 3px rgba(0, 0, 0, 0.5);
+      }
+
+      .btn-custom {
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       }
     }
 
