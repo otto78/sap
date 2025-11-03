@@ -5,101 +5,102 @@
     <div class="col-lg-8">
       <div class="card shadow">
         <div class="card-body p-4">
-          <p class="text-center text-muted mb-4"><strong>
-              Compila il form per inviarmi un messaggio o chiedere un appuntamento
-          </strong>
+
+          <p class="text-center text-muted mb-4">
+            <strong>Compila il form per inviarmi un messaggio o chiedere un appuntamento</strong>
           </p>
 
+          <!-- ✅ Alert Success -->
           @if (submitSuccess) {
-            <div class="alert alert-success d-flex align-items-center" role="alert">
-              <i class="bi bi-check-circle-fill me-2"></i>
-              <div>Messaggio inviato con successo!</div>
-            </div>
+          <div class="alert alert-success d-flex align-items-center" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <div>Messaggio inviato con successo!</div>
+          </div>
           }
 
+          <!-- ❌ Alert Error -->
           @if (submitError) {
-            <div class="alert alert-danger d-flex align-items-center" role="alert">
-              <i class="bi bi-exclamation-triangle-fill me-2"></i>
-              <div>Errore nell'invio. Riprova più tardi.</div>
-            </div>
+          <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <div>Errore nell'invio. Riprova più tardi.</div>
+          </div>
           }
 
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
             <div class="row">
+              <!-- Nome -->
               <div class="col-md-6 mb-3">
                 <label for="nome" class="form-label">Nome <span>*</span></label>
                 <input
+                  id="nome"
                   type="text"
                   class="form-control"
-                  [class.is-invalid]="contactForm.get('nome')?.invalid && contactForm.get('nome')?.touched"
-                  id="nome"
-                  formControlName="nome"
                   placeholder="Inserisci il tuo nome"
-                >
+                  formControlName="nome"
+                  [class.is-invalid]="contactForm.get('nome')?.invalid && contactForm.get('nome')?.touched" />
                 @if (contactForm.get('nome')?.invalid && contactForm.get('nome')?.touched) {
-                  <div class="invalid-feedback">
-                    Il nome è obbligatorio
-                  </div>
+                  <div class="invalid-feedback">Il nome è obbligatorio</div>
                 }
               </div>
 
+              <!-- Cognome -->
               <div class="col-md-6 mb-3">
                 <label for="cognome" class="form-label">Cognome <span>*</span></label>
                 <input
+                  id="cognome"
                   type="text"
                   class="form-control"
-                  [class.is-invalid]="contactForm.get('cognome')?.invalid && contactForm.get('cognome')?.touched"
-                  id="cognome"
-                  formControlName="cognome"
                   placeholder="Inserisci il tuo cognome"
-                >
+                  formControlName="cognome"
+                  [class.is-invalid]="contactForm.get('cognome')?.invalid && contactForm.get('cognome')?.touched" />
                 @if (contactForm.get('cognome')?.invalid && contactForm.get('cognome')?.touched) {
-                  <div class="invalid-feedback">
-                    Il cognome è obbligatorio
-                  </div>
+                  <div class="invalid-feedback">Il cognome è obbligatorio</div>
                 }
               </div>
             </div>
 
             <div class="row">
+              <!-- Età -->
               <div class="col-md-6 mb-3">
                 <label for="eta" class="form-label">Età <span>*</span></label>
                 <input
+                  id="eta"
                   type="number"
                   class="form-control"
-                  [class.is-invalid]="contactForm.get('eta')?.invalid && contactForm.get('eta')?.touched"
-                  id="eta"
-                  formControlName="eta"
                   placeholder="Inserisci la tua età"
-                >
+                  formControlName="eta"
+                  [class.is-invalid]="contactForm.get('eta')?.invalid && contactForm.get('eta')?.touched" />
                 @if (contactForm.get('eta')?.invalid && contactForm.get('eta')?.touched) {
                   <div class="invalid-feedback">
                     @if (contactForm.get('eta')?.errors?.['required']) {
                       <span>L'età è obbligatoria</span>
-                    } @if (contactForm.get('eta')?.errors?.['min']) {
+                    }
+                    @if (contactForm.get('eta')?.errors?.['min']) {
                       <span>L'età deve essere maggiore di 0</span>
-                    } @if (contactForm.get('eta')?.errors?.['max']) {
+                    }
+                    @if (contactForm.get('eta')?.errors?.['max']) {
                       <span>L'età deve essere minore di 150</span>
                     }
                   </div>
                 }
               </div>
 
+              <!-- Email -->
               <div class="col-md-6 mb-3">
                 <label for="email" class="form-label">Email <span>*</span></label>
                 <input
+                  id="email"
                   type="email"
                   class="form-control"
-                  [class.is-invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
-                  id="email"
-                  formControlName="email"
                   placeholder="nome@esempio.com"
-                >
+                  formControlName="email"
+                  [class.is-invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" />
                 @if (contactForm.get('email')?.invalid && contactForm.get('email')?.touched) {
                   <div class="invalid-feedback">
                     @if (contactForm.get('email')?.errors?.['required']) {
                       <span>L'email è obbligatoria</span>
-                    } @if (contactForm.get('email')?.errors?.['email']) {
+                    }
+                    @if (contactForm.get('email')?.errors?.['email']) {
                       <span>Inserisci un'email valida</span>
                     }
                   </div>
@@ -107,32 +108,31 @@
               </div>
             </div>
 
+            <!-- Messaggio -->
             <div class="mb-3">
               <label for="messaggio" class="form-label">Messaggio <span>*</span></label>
               <textarea
-                class="form-control"
-                [class.is-invalid]="contactForm.get('messaggio')?.invalid && contactForm.get('messaggio')?.touched"
                 id="messaggio"
-                formControlName="messaggio"
                 rows="5"
+                class="form-control"
                 placeholder="Scrivi il tuo messaggio..."
-              ></textarea>
+                formControlName="messaggio"
+                [class.is-invalid]="contactForm.get('messaggio')?.invalid && contactForm.get('messaggio')?.touched">
+              </textarea>
               @if (contactForm.get('messaggio')?.invalid && contactForm.get('messaggio')?.touched) {
-                <div class="invalid-feedback">
-                  Il messaggio è obbligatorio
-                </div>
+                <div class="invalid-feedback">Il messaggio è obbligatorio</div>
               }
             </div>
 
+            <!-- Privacy -->
             <div class="mb-4">
               <div class="form-check">
                 <input
-                  class="form-check-input"
-                  [class.is-invalid]="contactForm.get('privacy')?.invalid && contactForm.get('privacy')?.touched"
-                  type="checkbox"
                   id="privacy"
+                  type="checkbox"
+                  class="form-check-input"
                   formControlName="privacy"
-                >
+                  [class.is-invalid]="contactForm.get('privacy')?.invalid && contactForm.get('privacy')?.touched" />
                 <label class="form-check-label" for="privacy">
                   Accetto il trattamento dei dati personali secondo la
                   <a routerLink="/privacy" class="text-decoration-none">Privacy Policy</a>
@@ -146,12 +146,14 @@
               </div>
             </div>
 
+            <!-- 🔒 Google reCAPTCHA -->
+            <div class="d-flex justify-content-center mb-4">
+              <div id="recaptcha-container"></div>
+            </div>
+
+            <!-- Pulsante invio -->
             <div class="text-center">
-              <button
-                type="submit"
-                class="btn btn-primary btn-lg px-5"
-                [disabled]="contactForm.invalid || isSubmitting"
-              >
+              <button type="submit" class="btn btn-primary btn-lg px-5" [disabled]="isSubmitting">
                 @if (!isSubmitting) {
                   <span>Invia Messaggio</span>
                 } @else {
@@ -163,6 +165,7 @@
               </button>
             </div>
           </form>
+
         </div>
       </div>
     </div>
