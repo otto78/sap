@@ -37,20 +37,20 @@ jobs:
       # 5️⃣ Debug: controlla che la build abbia creato i file giusti
       - name: Debug - Check dist folder
         run: |
-          echo "=== Contents of dist/sap ==="
-          ls -la dist/sap
           echo "=== Contents of dist/sap/browser ==="
           ls -la dist/sap/browser
+          echo "=== Contents of dist/sap/browser/browser ==="
+          ls -la dist/sap/browser/browser
 
       # 6️⃣ Copia index.html in 404.html per fallback SPA
       - name: Copy 404.html
-        run: cp dist/sap/browser/index.html dist/sap/browser/404.html
+        run: cp dist/sap/browser/browser/index.html dist/sap/browser/browser/404.html
 
       # 7️⃣ Upload artifact per GitHub Pages
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist/sap/browser
+          path: ./dist/sap/browser/browser
 
       # 8️⃣ Deploy su GitHub Pages
       - name: Deploy to GitHub Pages
