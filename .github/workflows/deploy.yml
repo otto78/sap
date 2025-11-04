@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -30,7 +30,10 @@ jobs:
       - name: Build Angular app
         run: npm run build -- --configuration=production --base-href=/${{ github.repository }}/
 
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v1
         with:
           path: ./dist/sap/browser
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
