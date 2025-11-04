@@ -5,7 +5,7 @@
   position: relative;
   height: 94vh;
   min-height: 600px;
-  background-image: url("images/hands.jpg");
+  background-image: url("/images/hands.jpg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -307,7 +307,7 @@
 
 .about-section {
   position: relative;
-  background: url("images/sfondo-frasi.png") center/cover no-repeat;
+  background: url("/images/sfondo-frasi.png") center/cover no-repeat;
   color: $text-dark;
   padding: 0.5rem 0;
   overflow: visible;
