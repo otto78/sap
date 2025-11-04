@@ -3,8 +3,8 @@ name: Deploy Angular App to GitHub Pages
 on:
   push:
     branches:
-      - main  # Si attiva quando fai push su main
-  workflow_dispatch:   # Permette di lanciare manualmente il workflow
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -28,8 +28,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: |
-          npm run build -- --configuration=production --base-href=/${{ github.repository }}/
+        run: npm run build -- --configuration=production --base-href=/${{ github.repository }}/
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
