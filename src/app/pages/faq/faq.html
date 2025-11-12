@@ -1,9 +1,10 @@
 <app-title></app-title>
 
 <section class="container py-4 py-md-5">
-  <div class="row g-3 g-md-4">
+  <!-- Layout orizzontale per desktop -->
+  <div class="row g-3 g-md-4 d-none d-lg-flex horizontal-layout">
     <!-- Tabs Sidebar -->
-    <div class="col-12 col-lg-5">
+    <div class="col-lg-5">
       <div class="d-flex flex-column gap-2 gap-md-3">
         <div 
           *ngFor="let item of faqItems" 
@@ -19,7 +20,7 @@
     </div>
 
     <!-- Content Area -->
-    <div class="col-12 col-lg-7">
+    <div class="col-lg-7">
       <div class="tabs-content p-4 p-md-5 rounded shadow-sm">
         <div 
           *ngFor="let item of faqItems"
@@ -29,6 +30,53 @@
           role="tabpanel"
           [attr.aria-labelledby]="'tab-title-' + item.id">
           <div [innerHTML]="item.answer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Layout verticale (accordion) per tablet e mobile -->
+  <div class="d-lg-none vertical-layout">
+    <div class="accordion-container">
+      <div 
+        *ngFor="let item of faqItems" 
+        class="accordion-item mb-3">
+        <!-- Accordion Header -->
+        <div 
+          class="accordion-header p-3"
+          [class.active]="activeTab === item.id"
+          (click)="selectTab(item.id)"
+          role="button"
+          [attr.aria-expanded]="activeTab === item.id"
+          [attr.aria-controls]="'accordion-content-' + item.id">
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="accordion-question">{{ item.question }}</span>
+            <svg 
+              class="accordion-icon"
+              [class.rotated]="activeTab === item.id"
+              width="20" 
+              height="20" 
+              viewBox="0 0 20 20" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg">
+              <path 
+                d="M5 7.5L10 12.5L15 7.5" 
+                stroke="currentColor" 
+                stroke-width="2" 
+                stroke-linecap="round" 
+                stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        
+        <!-- Accordion Content -->
+        <div 
+          [id]="'accordion-content-' + item.id"
+          class="accordion-content"
+          [class.active]="activeTab === item.id"
+          role="region"
+          [attr.aria-labelledby]="'accordion-header-' + item.id">
+          <div class="accordion-body p-3" [innerHTML]="item.answer"></div>
         </div>
       </div>
     </div>

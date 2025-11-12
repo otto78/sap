@@ -80,6 +80,11 @@ I tempi sono soggetti a variazione anche in base alla risposta del singolo pazie
   ];
 
   selectTab(tabId: number): void {
-    this.activeTab = tabId;
+    // Su mobile/tablet (accordion verticale), chiude l'item se già aperto
+    if (this.activeTab === tabId) {
+      this.activeTab = 0; // Chiude tutti
+    } else {
+      this.activeTab = tabId;
+    }
   }
 }
