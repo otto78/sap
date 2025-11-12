@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-xl main-navbar px-1 px-lg-4" [class.scrolled]="isScrolled()">
-    <div class="container-fluid">
-        <div class="row w-100 align-items-center">
-            <div class="col-4 col-xl-3">
+    <!-- <div class="container-fluid"> -->
+        <div class="row w-100 align-items-center ms-1 ms-md-0">
+            <div class="col-5 col-xl-3">
                 <a class="navbar-brand" routerLink="/">
                     <div class="d-flex align-items-end">
                         <img src="images/logo-immagine.png" class="img-fluid logo-image"
@@ -11,15 +11,15 @@
                     </div>
                 </a>
             </div>
-            <div class="col-4 col-xl-6 text-center">
+            <div class="col-2 col-xl-6 text-center">
                 <button class="navbar-toggler d-xl-none" type="button" (click)="toggleMenu()"
                     [attr.aria-expanded]="!isMenuCollapsed()" aria-controls="navbarNav" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
-            <div class="col-4 col-xl-3 text-end">
+            <div class="col-5 col-xl-3 text-center text-md-end pe-0">
                 @for (social of socialLinks(); track social.url) {
-                <a (click)="openSocialLink(social.url)" class="social-link me-2 me-xl-5" role="button" tabindex="0"
+                <a (click)="openSocialLink(social.url)" class="social-link mx-2 me-xl-5" role="button" tabindex="0"
                     [attr.aria-label]="social.label" [href]="social.url" target="_blank">
                     <i [class]="'bi ' + social.icon"></i>
                 </a>
@@ -72,8 +72,6 @@
             </ul>
         </div>
 
-
-
         <!-- Menu desktop inline -->
         <div class="d-none d-xl-block desktop-menu">
             <ul class="navbar-nav mx-auto">
@@ -103,5 +101,5 @@
                 }
             </ul>
         </div>
-    </div>
+    <!-- </div> -->
 </nav>
