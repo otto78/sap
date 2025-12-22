@@ -21,22 +21,22 @@ export class Home {
     {
       title: 'Bambini',
       route: '/servizi/bambini',
-      image: 'images/bambini.png'
+      image: 'images/bambini.jpg'
     },
     {
       title: 'Adolescenti',
       route: '/servizi/adolescenti',
-      image: 'images/adolescenti.png'
+      image: 'images/adolescenti.jpg'
     },
     {
       title: 'Adulti',
       route: '/servizi/adulti',
-      image: 'images/adulti.png'
+      image: 'images/adulti.jpg'
     },
     {
       title: 'Terza Età',
       route: '/servizi/terzaEta',
-      image: 'images/terza_eta.png'
+      image: 'images/terza_eta.jpg'
     }
   ];
 }
