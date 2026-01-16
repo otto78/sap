@@ -392,7 +392,7 @@
     align-items: flex-start;
     justify-content: flex-end;
     height: 100%;
-    margin-top: -12rem;
+    margin-top: -8.4rem;
 
     .about-image-container {
       position: relative;
@@ -414,13 +414,19 @@
   }
 }
 
+@media (max-width: 1400px) {
+  .about-image-wrapper {
+    margin-top: 0rem;
+  }
+}
+
 // 📱 Responsività About Section
 @media (max-width: 1199px) {
   .about-section {
     margin-top: 6rem;
 
     .about-image-wrapper {
-      margin-top: -9rem;
+      margin-top: 5.7rem;
       text-align: center;
       justify-content: center;
 
